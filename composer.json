@@ -1,8 +1,8 @@
 {
-    "name": "danny/migrtaions",
+    "name": "danny/migrataions",
     "description": "More usability for laravel migration rollback",
     "require": {
-        "php": ">=7.4",
+        "php": ">=7.4"
     },
     "license": "MIT",
     "autoload": {
