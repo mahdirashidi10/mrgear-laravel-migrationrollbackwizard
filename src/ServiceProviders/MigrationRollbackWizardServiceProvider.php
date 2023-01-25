@@ -18,7 +18,7 @@ class MigrationRollbackWizardServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/../Config/mrw.php', 'mrw');
 
-        $this->app->bind('migrate:rollback:wizard', MigrationRollbackWizard::class);
+        $this->app->bind('migrate:rollback', MigrationRollbackWizard::class);
 
 
         $this->commands([
