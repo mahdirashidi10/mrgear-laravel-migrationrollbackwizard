@@ -21,5 +21,10 @@
             "email": "mahdirashidi.developer@gmail.com"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": [
+            "Danny\\Migrations\\ServiceProviders\\MigrationRollbackWizardServiceProvider"
+        ]
+    }
 }
