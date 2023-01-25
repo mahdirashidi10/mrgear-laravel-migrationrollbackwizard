@@ -23,8 +23,10 @@
     ],
     "minimum-stability": "dev",
     "extra": {
-        "laravel": [
-            "Danny\\Migrations\\ServiceProviders\\MigrationRollbackWizardServiceProvider"
-        ]
+        "laravel": {
+            "providers": [
+                "Danny\\Migrations\\ServiceProviders\\MigrationRollbackWizardServiceProvider"
+            ]
+        }
     }
 }
