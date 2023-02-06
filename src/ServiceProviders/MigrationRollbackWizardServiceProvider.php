@@ -1,8 +1,8 @@
 <?php
 
-namespace Danny\Migrations\ServiceProviders;
+namespace MRGear\MRW\ServiceProviders;
 
-use Danny\Migrations\Console\Commands\MigrationRollbackWizard;
+use MRGear\MRW\Console\Commands\MigrationRollbackWizard;
 use Illuminate\Support\ServiceProvider;
 
 class MigrationRollbackWizardServiceProvider extends ServiceProvider
@@ -19,10 +19,6 @@ class MigrationRollbackWizardServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/../Config/mrw.php', 'mrw');
         $this->app->bind('migrate:rollback:wizard', MigrationRollbackWizard::class);
-
-
-        $this->commands([
-            'migrate:rollback:wizard',
-        ]);
+        $this->commands('migrate:rollback:wizard');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Danny\Migrations\Console\Commands;
+namespace MRGear\MRW\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
@@ -32,25 +32,28 @@ class MigrationRollbackWizard extends Command
         $limit = $this->option('limit');
         $file = $this->option('file');
         $escape = $this->option('escape');
-        $maximum_batch = DB::table(config('mrw.migration.database.name'))->max(config('mrw.migration.database.countable'));
+        $database_table_name = config('mrw.migration.database.name');
+        $database_countable_row = config('mrw.migration.database.countable');
+        $database_file_name_row = config('mrw.migration.database.file');
+        $maximum_batch = DB::table($database_table_name)->max($database_countable_row);
         if($this->option('include')){
             foreach (config('mrw.migration.include') as $key => $file) {
                 if ($limit && $limit < $key + 1) {
                     break;
                 }
                 $file_name = $file->getFilenameWithoutExtension();
-                $base_query = DB::table(config('mrw.migration.database.name'))->where([config('mrw.migration.database.file') => $file_name]);
+                $base_query = DB::table($database_table_name)->where([$database_file_name_row => $file_name]);
                 if ($base_query->exists()){
                     if ($escape) {
                         $base_query->delete();
                         $this->info($file_name . ': Migration has been removed from "Migrated" list without rolling back');
                     } else {
-                        $base_query->update([config('mrw.migration.database.countable') => $maximum_batch + 1]);
+                        $base_query->update([$database_countable_row => $maximum_batch + 1]);
                     }
                 }
             }
             if (!$escape) {
-                if (DB::table(config('mrw.migration.database.name'))->max(config('mrw.migration.database.countable')) >
+                if (DB::table($database_table_name)->max($database_countable_row) >
                     $maximum_batch) {
                     $this->runCommand('migrate:rollback', [], $this->output);
                 } else {
@@ -61,14 +64,14 @@ class MigrationRollbackWizard extends Command
         elseif ($file) {
             if (File::isFile(config('mrw.migration.directory') . $file . '.php')) {
                 $file_name = $file;
-                $base_query = DB::table(config('mrw.migration.database.name'))->where([config('mrw.migration.database.file') =>
+                $base_query = DB::table($database_table_name)->where([$database_file_name_row =>
                     $file_name]);
                 if ($escape) {
                     $base_query->delete();
                     $this->info($file_name . ': Migration has been removed from "Migrated" list without rolling back');
                 } else {
-                    $base_query->update([config('mrw.migration.database.countable') => $maximum_batch + 1]);
-                    if (DB::table(config('mrw.migration.database.name'))->max(config('mrw.migration.database.countable')) >
+                    $base_query->update([$database_countable_row => $maximum_batch + 1]);
+                    if (DB::table($database_table_name)->max($database_countable_row) >
                         $maximum_batch) {
                         $this->runCommand('migrate:rollback', [], $this->output);
                     } else {
@@ -85,17 +88,17 @@ class MigrationRollbackWizard extends Command
                     break;
                 }
                 $file_name = $file->getFilenameWithoutExtension();
-                $base_query = DB::table(config('mrw.migration.database.name'))->where([config('mrw.migration.database.file') =>
+                $base_query = DB::table($database_table_name)->where([$database_file_name_row =>
                     $file_name]);
                 if ($escape) {
                     $base_query->delete();
                     $this->info($file_name . ': Migration has been removed from "Migrated" list without rolling back');
                 } else {
-                    $base_query->update([config('mrw.migration.database.countable') => $maximum_batch + 1]);
+                    $base_query->update([$database_countable_row => $maximum_batch + 1]);
                 }
             }
             if (!$escape) {
-                if (DB::table(config('mrw.migration.database.name'))->max(config('mrw.migration.database.countable')) >
+                if (DB::table($database_table_name)->max($database_countable_row) >
                     $maximum_batch) {
                     $this->runCommand('migrate:rollback', [], $this->output);
                 } else {

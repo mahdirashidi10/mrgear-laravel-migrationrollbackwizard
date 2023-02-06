@@ -1,23 +1,32 @@
 {
-    "name": "danny/migrataions",
+    "name": "mrgear/migrationrollbackwizard",
     "description": "More usability for laravel migration rollback",
+    "keywords": [
+        "mrw",
+        "migration rollback wizard",
+        "laravel",
+        "laravel migration",
+        "laravel migration rollback"
+    ],
     "require": {
-        "php": ">=7.4"
+        "php": ">=7.4",
+        "illuminate/database": "^7.0|^8.0|^9.0|^10.0|^11.0",
+        "illuminate/filesystem": "^7.0|^8.0|^9.0|^10.0|^11.0"
     },
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Danny\\Migrations\\": "src/"
+            "MRGear\\MRW\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Danny\\Migrations\\Tests\\": "tests/"
+            "MRGear\\MRW\\Tests\\": "tests/"
         }
     },
     "authors": [
         {
-            "name": "mahdirashidi",
+            "name": "mahdi rashidi",
             "email": "mahdirashidi.developer@gmail.com"
         }
     ],
@@ -25,7 +34,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Danny\\Migrations\\ServiceProviders\\MigrationRollbackWizardServiceProvider"
+                "MRGear\\MRW\\ServiceProviders"
             ]
         }
     }

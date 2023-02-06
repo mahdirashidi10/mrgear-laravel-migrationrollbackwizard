@@ -14,13 +14,4 @@ return [
 
         ]
     ],
-    'seeder' => [
-        'directory' => database_path('seeders'),
-        'exclude' => [
-
-        ],
-        'include' => [
-
-        ]
-    ]
 ];
