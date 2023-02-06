@@ -10,7 +10,7 @@ More usability for Laravel migration rollback.
 composer require mrgear/laravel-migrationrollbackwizard  
 ```
 
-### Brief Explaination ###
+### Brief Explanation ###
 
 ---
 
@@ -95,3 +95,10 @@ files in order.
 
 In ``` mrw.php ``` config file an include has been specified. 
 ``` php artisan migrate:rollback:wizard --include ``` will run migration files added in include array.
+
+######  Publish config  ######
+
+---
+```
+php artisan vendor:publish --provider="MRGear\MRW\ServiceProviders\MigrationRollbackWizardServiceProvider" --tag="config"
+```
