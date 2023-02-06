@@ -62,7 +62,7 @@ class MigrationRollbackWizard extends Command
             }
         }
         elseif ($file) {
-            if (File::isFile(config('mrw.migration.directory') . $file . '.php')) {
+            if (File::isFile(config('mrw.migration.directory') .'/'. $file . '.php')) {
                 $file_name = $file;
                 $base_query = DB::table($database_table_name)->where([$database_file_name_row =>
                     $file_name]);
