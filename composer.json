@@ -34,7 +34,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "MRGear\\MRW\\ServiceProviders"
+                "MRGear\\MRW\\ServiceProviders\\MigrationRollbackWizardServiceProvider"
             ]
         }
     }
