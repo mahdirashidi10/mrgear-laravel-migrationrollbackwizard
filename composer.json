@@ -1,5 +1,5 @@
 {
-    "name": "mrgear/migrationrollbackwizard",
+    "name": "mrgear/laravel-migrationrollbackwizard",
     "description": "More usability for laravel migration rollback",
     "keywords": [
         "mrw",

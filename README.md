@@ -7,7 +7,7 @@ More usability for Laravel migration rollback.
 
 ---
 ```
-composer require mrgear/migrationrollbackwizard  
+composer require mrgear/laravel-migrationrollbackwizard  
 ```
 
 ### Brief Explaination ###
